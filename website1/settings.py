@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'accounts_app',
     'store_app',
     'brand_app',
+    'cart_app',
+    'wishlist_app',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +72,7 @@ TEMPLATES = [
 
                 'category_app.context_processors.menu_links',
                 'brand_app.context_processors.brand_links',
+                'cart_app.context_processors.counter',
 
             ],
         },

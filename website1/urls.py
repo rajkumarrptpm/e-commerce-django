@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path,include
+
+import cart_app.urls,wishlist_app.urls
 import webMainApp.urls,store_app.urls
 from django.conf.urls.static import static
 from django.conf import settings
@@ -24,7 +26,9 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(webMainApp.urls)),
-    path('shop/',include(store_app.urls)),
+    path('shop/',include(store_app.urls,namespace='store_app')),
+    path('cart/',include(cart_app.urls)),
+    path('wishlist/',include(wishlist_app.urls)),
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

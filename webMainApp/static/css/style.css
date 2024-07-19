@@ -4,7 +4,7 @@
   Author: Colorib
   Author URI: https://www.colorib.com/
   Version: 1.0
-  Created: Colorib 
+  Created: Colorib
 ******************************************************************/
 
 /*------------------------------------------------------------------
@@ -164,10 +164,20 @@ ol {
 	text-transform: uppercase;
 	padding: 14px 30px;
 	color: #ffffff;
-	background: #000000;
+	background: #27ca3b;
 	letter-spacing: 4px;
 }
 
+.secondary-btn {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 14px 30px;
+    color: #ffffff;
+    background: #33dd1a;
+    letter-spacing: 4px;
+}
 .site-btn {
 	font-size: 14px;
 	color: #ffffff;
@@ -2335,6 +2345,8 @@ ol {
 .shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__pic {
 	float: left;
 	margin-right: 30px;
+
+
 }
 
 .shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__text {
@@ -3388,6 +3400,9 @@ ol {
 	.testimonial__text {
 		padding: 130px 45px 175px;
 	}
+	td .col{
+	width:200px;
+	}
 }
 
 /* Tablet Device = 768px */
@@ -3455,6 +3470,9 @@ ol {
 	}
 	.blog__details__share ul li:last-child {
 		margin-right: 0;
+	}
+	td .col{
+	width:200px;
 	}
 }
 
@@ -3791,6 +3809,9 @@ ol {
 	}
 	.hero__social {
 		margin-top: 180px;
+	}
+	td .col{
+	width:200px;
 	}
 }
 

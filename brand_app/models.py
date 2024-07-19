@@ -15,7 +15,7 @@ class Brand(models.Model):
         verbose_name_plural = 'brands'
 
     def get_url(self):
-        return reverse('products_by_brands', args=[self.slug])
+        return reverse('store_app:products_by_brands', args=[self.slug])
 
     def __str__(self):
         return self.brand_name
