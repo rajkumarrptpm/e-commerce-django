@@ -3,25 +3,32 @@
 <!-- Offcanvas Menu Begin -->
 <div class="offcanvas-menu-overlay"></div>
 <div class="offcanvas-menu-wrapper">
-    <div class="offcanvas__option">
-        <div class="offcanvas__links">
-            <a href="#">Sign in</a>
-            <a href="#">FAQs</a>
-        </div>
-        <div class="offcanvas__top__hover">
-            <span>Usd <i class="arrow_carrot-down"></i></span>
-            <ul>
-                <li>USD</li>
-                <li>EUR</li>
-                <li>USD</li>
-            </ul>
-        </div>
+    <div class="offcanvas__option" style="margin-left: auto;margin-right:auto;">
+        {% if user.id is not None %}
+            <div class="offcanvas__top__hover">
+                <span>{{ user.first_name }}{{ user.last_name }}<i class="arrow_carrot-down"></i></span>
+                <ul>
+                    <li><a href="./contact.html" style="font-size:17px; color:white;" >Account</a></li>
+                    <li><a href="{% url 'logout' %}" style="font-size:17px;color:white;">Logout</a></li>
+                </ul>
+            </div>
+        {% else %}
+            <span>Guest User | </span>
+            <div class="header__top__links">
+                <a href="{% url 'login' %}" style="color:black;">Sign in</a>
+            </div>
+        {% endif %}
     </div>
-    <div class="offcanvas__nav__option">
-        <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
+    <div class="offcanvas__nav__option" style="display:flex">
+        <div class="shop__sidebar__search" style="margin-right:20px;margin-top:-5px;height:0;">
+            <form action="{% url 'store_app:search' %}" method="GET">
+                <input type="text" placeholder="Search..." name="keyword">
+                <button type="submit"><span class="icon_search"></span></button>
+            </form>
+        </div>
         <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
-        <a href="#"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>0</span></a>
-        <div class="price">$0.00</div>
+        <a href="#"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>{{ cart_count }}</span></a>
+
     </div>
     <div id="mobile-menu-wrap"></div>
     <div class="offcanvas__text">
@@ -33,7 +40,7 @@
 <!-- Header Section Begin -->
 <header class="header">
     <div class="header__top">
-        <div class="container">
+        <div class="container" >
             <div class="row">
                 <div class="col-lg-6 col-md-7">
                     <div class="header__top__left">
@@ -42,24 +49,27 @@
                 </div>
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
-                        <div class="header__top__links">
-                            <a href="#">Sign in</a>
-                            <a href="#">FAQs</a>
-                        </div>
                         <div class="header__top__hover">
-                            <span>Usd <i class="arrow_carrot-down"></i></span>
-                            <ul>
-                                <li>USD</li>
-                                <li>EUR</li>
-                                <li>USD</li>
-                            </ul>
+                            {% if user.id is not None %}
+                                <span>{{ user.first_name }} {{ user.last_name }}<i class="arrow_carrot-down"></i></span>
+                                <ul>
+                                    <li ><a href="./contact.html" style="font-size:17px;" onmouseover="this.style.color='black'" onmouseout="this.style.color='blue'">Account</a></li>
+                                    <li> <a href="{% url 'dashboard' %}"style="font-size:17px;" onmouseover="this.style.color='black'" onmouseout="this.style.color='blue'">Dashboard</a></li>
+                                    <li> <a href="{% url 'logout' %}"style="font-size:17px;" onmouseover="this.style.color='black'" onmouseout="this.style.color='blue'">Logout</a></li>
+                                </ul>
+                            {% else %}
+                                <span>Guest User | </span>
+                                <div class="header__top__links" style="margin-left: 5px;">
+                                    <a href="{% url 'login' %}" >Sign in</a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container" style="height:100px;">
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
@@ -70,7 +80,7 @@
                 <nav class="header__menu mobile-menu">
                     <ul>
                         <li class="{% if active_page == 'home' %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
-                        <li class="{% if active_page == 'store_app:shop' and not categories %}active{% endif %}"><a href="{% url 'store_app:shop' %}">Shop</a></li>
+                        <li class="{% if active_page == 'shop' and not categories %}active{% endif %}"><a href="{% url 'store_app:shop' %}">Shop</a></li>
                         <li class="{% if categories %}active{% endif %}"><a href="">Category</a>
                             <ul class="dropdown">
                                 <li><a href="{% url 'store_app:shop' %}">All categories</a></li>
@@ -79,18 +89,20 @@
                                 {% endfor %}
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contacts</a></li>
+                        <li><a href="#">Contacts</a></li>
+
+
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-3 col-md-3">
-                <div class="header__nav__option" style="display:flex; ">
-                    <div class="shop__sidebar__search"style="margin-right:20px;margin-top:-5px;">
+                <div class="header__nav__option"  style="display:flex;">
+                    <div class="shop__sidebar__search"style="margin-right:20px;margin-top:-5px;height:0;">
                         <form action="{% url 'store_app:search' %}" method="GET">
                             <input type="text" placeholder="Search..." name="keyword">
                             <button type="submit"><span class="icon_search"></span></button>
                         </form>
+
                     </div>
                     <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
                     <a href="{% url 'cart' %}"><img src="{% static 'img/icon/cart.png' %}" alt="" style="width:25px;height:20px;margin-right:3px;height:22px;"><span class="price">{{ cart_count }}</span> </a>
@@ -98,7 +110,7 @@
                 </div>
             </div>
         </div>
-        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        <div class="canvas__open"><i class="fa fa-bars"  style="width:25px;height:20px;"></i></div>
     </div>
 </header>
 <!-- Header Section End -->

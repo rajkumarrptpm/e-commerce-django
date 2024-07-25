@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path,include
 
+import accounts_app.urls
 import cart_app.urls,wishlist_app.urls
 import webMainApp.urls,store_app.urls
 from django.conf.urls.static import static
@@ -28,6 +29,7 @@ urlpatterns = [
     path('',include(webMainApp.urls)),
     path('shop/',include(store_app.urls,namespace='store_app')),
     path('cart/',include(cart_app.urls)),
+    path('accounts/',include(accounts_app.urls)),
     path('wishlist/',include(wishlist_app.urls)),
 ]
 urlpatterns += staticfiles_urlpatterns()

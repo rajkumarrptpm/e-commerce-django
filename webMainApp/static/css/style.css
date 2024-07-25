@@ -3379,6 +3379,8 @@ ol {
 @media only screen and (min-width: 1200px) {
 	.container {
 		max-width: 1170px;
+
+
 	}
 }
 
@@ -3411,6 +3413,7 @@ ol {
 	.header__menu ul li {
 		margin-right: 10px;
 	}
+
 	.header__nav__option a {
 		margin-right: 10px;
 	}
@@ -3669,6 +3672,8 @@ ol {
 	}
 	.header .container {
 		position: relative;
+		height: 100px;
+
 	}
 	.header__menu {
 		display: none;
@@ -3820,6 +3825,9 @@ ol {
 @media only screen and (max-width: 479px) {
 	.cart__total {
 		padding: 35px 30px 40px;
+	}
+	.header__nav__option{
+	    display:none;
 	}
 	.hero__items {
 		height: auto;

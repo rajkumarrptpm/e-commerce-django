@@ -74,3 +74,10 @@ def search(request):
         'product_count':product_count,
     }
     return render(request,'store/shop.html',context)
+
+
+def contact(request):
+    context = {
+        'active_page':'contact'
+    }
+    return render(request, 'contact.html')
