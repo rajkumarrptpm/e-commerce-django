@@ -89,7 +89,7 @@
                                 {% endfor %}
                             </ul>
                         </li>
-                        <li><a href="#">Contacts</a></li>
+                        <li class="{% if active_page == 'contacts'%}active{% endif %}"><a href="{% url 'store_app:contact' %}">Contacts</a></li>
 
 
                     </ul>

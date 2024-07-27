@@ -78,6 +78,6 @@ def search(request):
 
 def contact(request):
     context = {
-        'active_page':'contact'
+        'active_page':'contacts'
     }
-    return render(request, 'contact.html')
+    return render(request, 'store/contact.html',context)
