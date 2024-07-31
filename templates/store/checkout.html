@@ -26,7 +26,7 @@
 <section class="checkout spad">
     <div class="container">
         <div class="checkout__form">
-            <form action="" method="POST">
+            <form action="{% url 'place_order' %}" method="POST">
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-lg-7 col-md-6">
@@ -49,7 +49,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Mobile Number<span>*</span></p>
-                                    <input type="text" name="mobile_number" required>
+                                    <input type="text" name="mobile_no" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -68,7 +68,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Street<span>*</span></p>
-                                    <input type="text" name="district" required>
+                                    <input type="text" name="street" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -103,7 +103,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Postcode<span>*</span></p>
-                                    <input type="number" name="postcode" required>
+                                    <input type="number" name="pincode" required>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                             <p>Order notes</p>
                             <input type="text"
                             placeholder="Notes about your order, e.g. special notes for delivery."
-                            name="notes"
+                            name="order_note"
                             >
                         </div>
                     </div>
